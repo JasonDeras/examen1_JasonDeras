@@ -163,6 +163,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Devolver"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_DevolverMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="cb_Libros">
               <Properties>

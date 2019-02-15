@@ -116,6 +116,11 @@ public class Usuario extends javax.swing.JFrame {
         jl_Libros.setText("Libros");
 
         bt_Devolver.setText("Devolver");
+        bt_Devolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_DevolverMouseClicked(evt);
+            }
+        });
 
         cb_Libros.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -502,6 +507,9 @@ public class Usuario extends javax.swing.JFrame {
             DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) cb_Libros1.getModel();
             modelo1.addElement(libros);
             cb_Libros1.setModel(modelo1);
+            DefaultComboBoxModel modelo2 = (DefaultComboBoxModel) cb_Libros2.getModel();
+            modelo2.addElement(libros);
+            cb_Libros2.setModel(modelo2);
             if (u.getGenero_f().equalsIgnoreCase(((Usuarios) libros.get(cont)).getGenero_f())) {
                 Object[] newrow = {
                     l.getTitulo(),
@@ -588,9 +596,13 @@ public class Usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (((Amigos) amigos.get(cont)).getNombre_u().equalsIgnoreCase(tf_Amigo.getText())) {
             if (tabla3.getSelectedRow() >= 0) {
-                DefaultTableModel modelo = (DefaultTableModel) tabla3.getModel();
-                modelo.removeRow(tabla3.getSelectedRow());
-                tabla3.setModel(modelo);
+                DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Libros.getModel();
+                modelo.removeElementAt(Integer.parseInt("" + cb_Libros.getSelectedItem()));
+                modelo.removeElementAt(Integer.parseInt("" + cb_Libros1.getSelectedItem()));
+                modelo.removeElementAt(Integer.parseInt("" + cb_Libros2.getSelectedItem()));
+                DefaultTableModel modelo1 = (DefaultTableModel) tabla3.getModel();
+                modelo1.removeRow(tabla3.getSelectedRow());
+                tabla3.setModel(modelo1);
                 ((Usuarios) libros.remove(cont)).getLibros();
                 ((Amigos) libros.get(cont)).setLibros(libros);
                 cont++;
@@ -625,6 +637,20 @@ public class Usuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El libro no esta en su lista de libros");
         }
     }//GEN-LAST:event_bt_BuscarMouseClicked
+
+    private void bt_DevolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_DevolverMouseClicked
+        // TODO add your handling code here:
+        if (tabla3.getSelectedRow() >= 0) {
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Libros.getModel();
+            modelo.removeElementAt(Integer.parseInt("" + cb_Libros.getSelectedItem()));
+            modelo.removeElementAt(Integer.parseInt("" + cb_Libros1.getSelectedItem()));
+            modelo.removeElementAt(Integer.parseInt("" + cb_Libros2.getSelectedItem()));
+            DefaultTableModel modelo1 = (DefaultTableModel) tabla3.getModel();
+            modelo1.removeRow(tabla3.getSelectedRow());
+            tabla3.setModel(modelo1);
+            //Caster a vacios los parametros otra vez
+        }
+    }//GEN-LAST:event_bt_DevolverMouseClicked
 
     /**
      * @param args the command line arguments

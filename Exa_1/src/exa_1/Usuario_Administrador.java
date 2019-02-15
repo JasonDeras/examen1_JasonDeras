@@ -536,6 +536,10 @@ public class Usuario_Administrador extends javax.swing.JFrame {
     private void bt_EliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_EliminarMouseClicked
         // TODO add your handling code here:
         if (tabla1.getSelectedRow() >= 0) {
+            DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) cb_Libros1.getModel();
+            DefaultComboBoxModel modelo2 = (DefaultComboBoxModel) cb_Libros.getModel();
+            modelo1.removeElementAt(Integer.parseInt("" + cb_Libros.getSelectedItem()));
+            modelo1.removeElementAt(Integer.parseInt("" + cb_Libros1.getSelectedItem()));
             DefaultTableModel modelo = (DefaultTableModel) tabla1.getModel();
             modelo.removeRow(tabla1.getSelectedRow());
             tabla1.setModel(modelo);
