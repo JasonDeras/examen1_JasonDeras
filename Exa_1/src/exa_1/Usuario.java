@@ -7,6 +7,7 @@ package exa_1;
 
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,12 +41,32 @@ public class Usuario extends javax.swing.JFrame {
         bt_Devolver = new javax.swing.JButton();
         cb_Libros = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla1 = new javax.swing.JTable();
         panel3 = new java.awt.Panel();
+        jl_Libros1 = new javax.swing.JLabel();
+        cb_Libros1 = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabla2 = new javax.swing.JTable();
         panel4 = new java.awt.Panel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabla3 = new javax.swing.JTable();
+        cb_Libros2 = new javax.swing.JComboBox<>();
+        jl_Amigo = new javax.swing.JLabel();
+        tf_Amigo = new javax.swing.JTextField();
+        bt_Prestar = new javax.swing.JButton();
         panel5 = new java.awt.Panel();
+        jl_Libro = new javax.swing.JLabel();
+        bt_Buscar = new javax.swing.JButton();
+        tf_titulo = new javax.swing.JTextField();
         panel6 = new java.awt.Panel();
+        panel8 = new java.awt.Panel();
+        jl_Amigo1 = new javax.swing.JLabel();
+        tf_Amigo1 = new javax.swing.JTextField();
+        bt_Agregar_A = new javax.swing.JButton();
         panel7 = new java.awt.Panel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabla4 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Usuario");
@@ -96,12 +117,15 @@ public class Usuario extends javax.swing.JFrame {
 
         bt_Devolver.setText("Devolver");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        cb_Libros.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_LibrosItemStateChanged(evt);
+            }
+        });
+
+        tabla1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Titulo", "Descripcion", "Puntaje", "Genero", "Valor", "Edicion", "Autor", "Año de Publicacion"
@@ -122,7 +146,7 @@ public class Usuario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla1);
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
         panel2.setLayout(panel2Layout);
@@ -157,67 +181,296 @@ public class Usuario extends javax.swing.JFrame {
 
         tp_Usuario.addTab("Devolver Lbros", panel2);
 
+        jl_Libros1.setText("Libros");
+
+        cb_Libros1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_Libros1ItemStateChanged(evt);
+            }
+        });
+
+        tabla2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Titulo", "Descripcion", "Puntaje", "Genero", "Valor", "Edicion", "Autor", "Año de Publicacion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tabla2);
+
         javax.swing.GroupLayout panel3Layout = new javax.swing.GroupLayout(panel3);
         panel3.setLayout(panel3Layout);
         panel3Layout.setHorizontalGroup(
             panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(panel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel3Layout.createSequentialGroup()
+                        .addComponent(jl_Libros1)
+                        .addGap(32, 32, 32)
+                        .addComponent(cb_Libros1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         panel3Layout.setVerticalGroup(
             panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 475, Short.MAX_VALUE)
+            .addGroup(panel3Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_Libros1)
+                    .addComponent(cb_Libros1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         tp_Usuario.addTab("Informacion de Libros", panel3);
+
+        jLabel1.setText("Libros");
+
+        tabla3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Titulo", "Descripcion", "Puntaje", "Genero", "Valor", "Edicion", "Autor", "Año de Publicacion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tabla3);
+
+        cb_Libros2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_Libros2ItemStateChanged(evt);
+            }
+        });
+
+        jl_Amigo.setText("Usuario de amigo");
+
+        bt_Prestar.setText("Prestar");
+        bt_Prestar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_PrestarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel4Layout = new javax.swing.GroupLayout(panel4);
         panel4.setLayout(panel4Layout);
         panel4Layout.setHorizontalGroup(
             panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(panel4Layout.createSequentialGroup()
+                .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel4Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(cb_Libros2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panel4Layout.createSequentialGroup()
+                                .addComponent(jl_Amigo)
+                                .addGap(18, 18, 18)
+                                .addComponent(tf_Amigo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panel4Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(bt_Prestar)))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         panel4Layout.setVerticalGroup(
             panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 475, Short.MAX_VALUE)
+            .addGroup(panel4Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cb_Libros2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jl_Amigo)
+                    .addComponent(tf_Amigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(bt_Prestar)
+                .addGap(50, 50, 50))
         );
 
         tp_Usuario.addTab("Prestar Libro", panel4);
+
+        jl_Libro.setText("Titulo ");
+
+        bt_Buscar.setText("Buscar");
+        bt_Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_BuscarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel5Layout = new javax.swing.GroupLayout(panel5);
         panel5.setLayout(panel5Layout);
         panel5Layout.setHorizontalGroup(
             panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(panel5Layout.createSequentialGroup()
+                .addGroup(panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jl_Libro)
+                        .addGap(28, 28, 28)
+                        .addComponent(tf_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel5Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(bt_Buscar)))
+                .addContainerGap(490, Short.MAX_VALUE))
         );
         panel5Layout.setVerticalGroup(
             panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 475, Short.MAX_VALUE)
+            .addGroup(panel5Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_Libro)
+                    .addComponent(tf_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(127, 127, 127)
+                .addComponent(bt_Buscar)
+                .addContainerGap(273, Short.MAX_VALUE))
         );
 
         tp_Usuario.addTab("Buscar Libros", panel5);
+
+        jl_Amigo1.setText("Usuario de amigo");
+
+        bt_Agregar_A.setText("Agregar Amigo");
+        bt_Agregar_A.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_Agregar_AMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel8Layout = new javax.swing.GroupLayout(panel8);
+        panel8.setLayout(panel8Layout);
+        panel8Layout.setHorizontalGroup(
+            panel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel8Layout.createSequentialGroup()
+                .addGroup(panel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel8Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jl_Amigo1))
+                    .addGroup(panel8Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(tf_Amigo1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel8Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(bt_Agregar_A)))
+                .addContainerGap(541, Short.MAX_VALUE))
+        );
+        panel8Layout.setVerticalGroup(
+            panel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel8Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(jl_Amigo1)
+                .addGap(38, 38, 38)
+                .addComponent(tf_Amigo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(bt_Agregar_A)
+                .addContainerGap(268, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout panel6Layout = new javax.swing.GroupLayout(panel6);
         panel6.setLayout(panel6Layout);
         panel6Layout.setHorizontalGroup(
             panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel6Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         panel6Layout.setVerticalGroup(
             panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 475, Short.MAX_VALUE)
+            .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel6Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         tp_Usuario.addTab("Agregar Amigos", panel6);
+
+        tabla4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Titulo", "Descripcion", "Puntaje", "Genero", "Valor", "Edicion", "Autor", "Año de Publicacion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tabla4);
 
         javax.swing.GroupLayout panel7Layout = new javax.swing.GroupLayout(panel7);
         panel7.setLayout(panel7Layout);
         panel7Layout.setHorizontalGroup(
             panel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(panel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel7Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(70, Short.MAX_VALUE)))
         );
         panel7Layout.setVerticalGroup(
             panel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 475, Short.MAX_VALUE)
+            .addGroup(panel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel7Layout.createSequentialGroup()
+                    .addGap(32, 32, 32)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(138, Short.MAX_VALUE)))
         );
 
         tp_Usuario.addTab("Genero Favorito", panel7);
@@ -239,11 +492,132 @@ public class Usuario extends javax.swing.JFrame {
     private void bt_Agregar_ListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_Agregar_ListaMouseClicked
         // TODO add your handling code here:
         Libros l = new Libros();
-        libros.add(l);
-        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Libros.getModel();
-        modelo.addElement(libros);
-        cb_Libros.setModel(modelo);
+        Usuarios u = new Usuarios();
+        if (l.getTitulo().equalsIgnoreCase(tf_Libro.getText())) {
+            libros.add(l);
+            ((Usuarios) libros.get(cont)).setLibros(libros);
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Libros.getModel();
+            modelo.addElement(libros);
+            cb_Libros.setModel(modelo);
+            DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) cb_Libros1.getModel();
+            modelo1.addElement(libros);
+            cb_Libros1.setModel(modelo1);
+            if (u.getGenero_f().equalsIgnoreCase(((Usuarios) libros.get(cont)).getGenero_f())) {
+                Object[] newrow = {
+                    l.getTitulo(),
+                    l.getDescripcion(),
+                    l.getPuntaje(),
+                    l.getGenero(),
+                    l.getValor(),
+                    l.getEdicion(),
+                    l.getAutor(),
+                    (((new Date()).getTime()) - l.getFecha().getTime() / (1000 * 60 * 60 * 24)),
+                    l.getFecha()};
+                DefaultTableModel modelol = (DefaultTableModel) tabla4.getModel();
+                modelol.addRow(newrow);
+                tabla4.setModel(modelol);
+            }
+            cont++;
+        } else {
+            JOptionPane.showMessageDialog(this, "El libro no existe en la libreria");
+        }
     }//GEN-LAST:event_bt_Agregar_ListaMouseClicked
+
+    private void cb_LibrosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_LibrosItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == 2) {
+            Libros s = (Libros) cb_Libros.getSelectedItem();
+            Object[] newrow = {
+                s.getTitulo(),
+                s.getDescripcion(),
+                s.getPuntaje(),
+                s.getGenero(),
+                s.getValor(),
+                s.getEdicion(),
+                s.getAutor(),
+                (((new Date()).getTime()) - s.getFecha().getTime() / (1000 * 60 * 60 * 24)),
+                s.getFecha()};
+            DefaultTableModel modelo = (DefaultTableModel) tabla1.getModel();
+            modelo.addRow(newrow);
+            tabla1.setModel(modelo);
+        }
+    }//GEN-LAST:event_cb_LibrosItemStateChanged
+
+    private void cb_Libros1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_Libros1ItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == 2) {
+            Libros s = (Libros) cb_Libros1.getSelectedItem();
+            Object[] newrow = {
+                s.getTitulo(),
+                s.getDescripcion(),
+                s.getPuntaje(),
+                s.getGenero(),
+                s.getValor(),
+                s.getEdicion(),
+                s.getAutor(),
+                (((new Date()).getTime()) - s.getFecha().getTime() / (1000 * 60 * 60 * 24)),
+                s.getFecha()};
+            DefaultTableModel modelo = (DefaultTableModel) tabla2.getModel();
+            modelo.addRow(newrow);
+            tabla2.setModel(modelo);
+        }
+    }//GEN-LAST:event_cb_Libros1ItemStateChanged
+
+    private void cb_Libros2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_Libros2ItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == 2) {
+            Libros s = (Libros) cb_Libros2.getSelectedItem();
+            Object[] newrow = {
+                s.getTitulo(),
+                s.getDescripcion(),
+                s.getPuntaje(),
+                s.getGenero(),
+                s.getValor(),
+                s.getEdicion(),
+                s.getAutor(),
+                (((new Date()).getTime()) - s.getFecha().getTime() / (1000 * 60 * 60 * 24)),
+                s.getFecha()};
+            DefaultTableModel modelo = (DefaultTableModel) tabla3.getModel();
+            modelo.addRow(newrow);
+            tabla3.setModel(modelo);
+        }
+    }//GEN-LAST:event_cb_Libros2ItemStateChanged
+
+    private void bt_PrestarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_PrestarMouseClicked
+        // TODO add your handling code here:
+        if (((Amigos) amigos.get(cont)).getNombre_u().equalsIgnoreCase(tf_Amigo.getText())) {
+            if (tabla3.getSelectedRow() >= 0) {
+                DefaultTableModel modelo = (DefaultTableModel) tabla3.getModel();
+                modelo.removeRow(tabla3.getSelectedRow());
+                tabla3.setModel(modelo);
+                cont++;
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "El usuario del amigo no existe");
+        }
+    }//GEN-LAST:event_bt_PrestarMouseClicked
+
+    private void bt_Agregar_AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_Agregar_AMouseClicked
+        // TODO add your handling code here:
+        Amigos a = new Amigos();
+        if (a.getNombre_u().equals(tf_Amigo1.getText())) {
+            amigos.add(a);
+            ((Usuarios) amigos.get(cont)).setAmigos(amigos);
+            cont++;
+        } else {
+            JOptionPane.showMessageDialog(this, "El usuario del amigo no existe");
+        }
+    }//GEN-LAST:event_bt_Agregar_AMouseClicked
+
+    private void bt_BuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_BuscarMouseClicked
+        // TODO add your handling code here:
+        if (((Usuarios) libros.get(cont)).getLibros().equals(tf_titulo.getText())) {
+            JOptionPane.showMessageDialog(this, "El libro esta en su lista de libros");
+            cont++;
+        } else {
+            JOptionPane.showMessageDialog(this, "El libro no esta en su lista de libros");
+        }
+    }//GEN-LAST:event_bt_BuscarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -281,12 +655,24 @@ public class Usuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_Agregar_A;
     private javax.swing.JButton bt_Agregar_Lista;
+    private javax.swing.JButton bt_Buscar;
     private javax.swing.JButton bt_Devolver;
+    private javax.swing.JButton bt_Prestar;
     private javax.swing.JComboBox<String> cb_Libros;
+    private javax.swing.JComboBox<String> cb_Libros1;
+    private javax.swing.JComboBox<String> cb_Libros2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel jl_Amigo;
+    private javax.swing.JLabel jl_Amigo1;
+    private javax.swing.JLabel jl_Libro;
     private javax.swing.JLabel jl_Libros;
+    private javax.swing.JLabel jl_Libros1;
     private javax.swing.JLabel jl_Titulo_Libro;
     private java.awt.Panel panel1;
     private java.awt.Panel panel2;
@@ -295,9 +681,19 @@ public class Usuario extends javax.swing.JFrame {
     private java.awt.Panel panel5;
     private java.awt.Panel panel6;
     private java.awt.Panel panel7;
+    private java.awt.Panel panel8;
+    private javax.swing.JTable tabla1;
+    private javax.swing.JTable tabla2;
+    private javax.swing.JTable tabla3;
+    private javax.swing.JTable tabla4;
+    private javax.swing.JTextField tf_Amigo;
+    private javax.swing.JTextField tf_Amigo1;
     private javax.swing.JTextField tf_Libro;
+    private javax.swing.JTextField tf_titulo;
     private javax.swing.JTabbedPane tp_Usuario;
     // End of variables declaration//GEN-END:variables
 
     ArrayList libros = new ArrayList();
+    ArrayList amigos = new ArrayList();
+    int cont = 0;
 }
