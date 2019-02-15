@@ -31,6 +31,7 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
         bt_Usuario_Biblioteca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Log in");
 
         bt_Usaurio_Administrador.setText("Usuario Administrador");
         bt_Usaurio_Administrador.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -72,10 +73,18 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
 
     private void bt_Usaurio_AdministradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_Usaurio_AdministradorMouseClicked
         // TODO add your handling code here:
+        Usuario_Administrador A=new Usuario_Administrador ();
+        A.setLocationRelativeTo(this);
+        A.pack();
+        A.setVisible(true);
     }//GEN-LAST:event_bt_Usaurio_AdministradorMouseClicked
 
     private void bt_Usuario_BibliotecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_Usuario_BibliotecaMouseClicked
         // TODO add your handling code here:
+        Usuario u=new Usuario();
+        u.setLocationRelativeTo(this);
+        u.pack();
+        u.setVisible(true);
     }//GEN-LAST:event_bt_Usuario_BibliotecaMouseClicked
 
     /**
