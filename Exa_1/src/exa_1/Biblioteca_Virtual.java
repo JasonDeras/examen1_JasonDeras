@@ -5,6 +5,9 @@
  */
 package exa_1;
 
+import java.util.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jason
@@ -29,6 +32,7 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
 
         bt_Usaurio_Administrador = new javax.swing.JButton();
         bt_Usuario_Biblioteca = new javax.swing.JButton();
+        bt_Creacion_Usuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Log in");
@@ -47,16 +51,25 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
             }
         });
 
+        bt_Creacion_Usuario.setText("Creacion de un Usuario");
+        bt_Creacion_Usuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_Creacion_UsuarioMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bt_Usaurio_Administrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bt_Usuario_Biblioteca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bt_Creacion_Usuario)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(bt_Usaurio_Administrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_Usuario_Biblioteca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -65,7 +78,9 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
                 .addComponent(bt_Usaurio_Administrador)
                 .addGap(57, 57, 57)
                 .addComponent(bt_Usuario_Biblioteca)
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(bt_Creacion_Usuario)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();
@@ -73,19 +88,62 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
 
     private void bt_Usaurio_AdministradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_Usaurio_AdministradorMouseClicked
         // TODO add your handling code here:
-        Usuario_Administrador A=new Usuario_Administrador ();
+        Usuario_Administrador A = new Usuario_Administrador();
         A.setLocationRelativeTo(this);
         A.pack();
-        A.setVisible(true);
+        String usuario = JOptionPane.showInputDialog(this, "Ingrese usuario");
+        String contraseña = JOptionPane.showInputDialog(this, "Contraseña de usuario");
+        if (contraseña.equalsIgnoreCase("24052180") && usuario.equalsIgnoreCase("Diego Mendoza")) {
+            A.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario Administrador no valido");
+        }
     }//GEN-LAST:event_bt_Usaurio_AdministradorMouseClicked
 
     private void bt_Usuario_BibliotecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_Usuario_BibliotecaMouseClicked
         // TODO add your handling code here:
-        Usuario u=new Usuario();
+        Usuario u = new Usuario();
         u.setLocationRelativeTo(this);
         u.pack();
-        u.setVisible(true);
+        String usuario = JOptionPane.showInputDialog(this, "Ingrese usuario");
+        String contraseña = JOptionPane.showInputDialog(this, "Contraseña de usuario");
+        if (usuario.equalsIgnoreCase(this.usuario.get(cont).getNombre_u()) && contraseña.equalsIgnoreCase(this.usuario.get(cont).getContraseña())) {
+            u.setVisible(true);
+            cont++;
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario no valido o no existente");
+        }
     }//GEN-LAST:event_bt_Usuario_BibliotecaMouseClicked
+
+    private void bt_Creacion_UsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_Creacion_UsuarioMouseClicked
+        // TODO add your handling code here:
+        String genero_f = "";
+        String nombre_u = JOptionPane.showInputDialog(this, "Ingrese usuario");
+        String contraseña = JOptionPane.showInputDialog(this, "Contraseña de usuario");
+        Date fecha_nace = new Date();
+        String numero_t = JOptionPane.showInputDialog(this, "Ingrese su numero de telefono");
+        String correo = JOptionPane.showInputDialog(this, "Ingrese su correo electronico");
+        String nombre_c = JOptionPane.showInputDialog(this, "Ingrese su nombre completo");
+        int genero = Integer.parseInt(JOptionPane.showInputDialog(this, "1. Fantasioa\n2. Romance\n3. Accion\n4. Historia\nIngrese una opcion como su genero favorito"));
+        switch (genero) {
+            case 1:
+                genero_f = "Fantasia";
+                break;
+            case 2:
+                genero_f = "Romance";
+                break;
+            case 3:
+                genero_f = "Accion";
+                break;
+            case 4:
+                genero_f = "Histario";
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Tipo de genero favorito no valido");
+                break;
+        }//Fin del case de los libros
+        usuario.add(new Usuarios(nombre_u, contraseña, fecha_nace, numero_t, correo, nombre_c, genero_f));
+    }//GEN-LAST:event_bt_Creacion_UsuarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -123,7 +181,11 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_Creacion_Usuario;
     private javax.swing.JButton bt_Usaurio_Administrador;
     private javax.swing.JButton bt_Usuario_Biblioteca;
     // End of variables declaration//GEN-END:variables
+
+    ArrayList<Usuarios> usuario = new ArrayList();
+    int cont = 0;
 }
