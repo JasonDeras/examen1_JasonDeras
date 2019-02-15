@@ -26,12 +26,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="bt_Creacion_Usuario" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="bt_Creacion_Usuario" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="bt_Usaurio_Administrador" max="32767" attributes="0"/>
                       <Component id="bt_Usuario_Biblioteca" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="bt_Historail" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="154" max="32767" attributes="0"/>
           </Group>
@@ -46,7 +47,9 @@
               <Component id="bt_Usuario_Biblioteca" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Component id="bt_Creacion_Usuario" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="74" max="32767" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <Component id="bt_Historail" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,6 +77,14 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_Creacion_UsuarioMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_Historail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Historial"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_HistorailMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>

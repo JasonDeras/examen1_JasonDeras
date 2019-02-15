@@ -33,6 +33,7 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
         bt_Usaurio_Administrador = new javax.swing.JButton();
         bt_Usuario_Biblioteca = new javax.swing.JButton();
         bt_Creacion_Usuario = new javax.swing.JButton();
+        bt_Historail = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Log in");
@@ -58,17 +59,25 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
             }
         });
 
+        bt_Historail.setText("Historial");
+        bt_Historail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_HistorailMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bt_Creacion_Usuario)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bt_Creacion_Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(bt_Usaurio_Administrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bt_Usuario_Biblioteca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(bt_Usuario_Biblioteca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bt_Historail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(154, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -80,7 +89,9 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
                 .addComponent(bt_Usuario_Biblioteca)
                 .addGap(45, 45, 45)
                 .addComponent(bt_Creacion_Usuario)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(bt_Historail)
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -94,6 +105,7 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
         String usuario = JOptionPane.showInputDialog(this, "Ingrese usuario");
         String contraseña = JOptionPane.showInputDialog(this, "Contraseña de usuario");
         if (usuario.equalsIgnoreCase(this.usuario.get(cont).getNombre_u()) && contraseña.equalsIgnoreCase(this.usuario.get(cont).getContraseña())) {
+            histori.add("Login de un usuario ad ministrador de la biblioteca virtual");
             A.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Usuario Administrador no valido");
@@ -108,6 +120,7 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
         String usuario = JOptionPane.showInputDialog(this, "Ingrese usuario");
         String contraseña = JOptionPane.showInputDialog(this, "Contraseña de usuario");
         if (usuario.equalsIgnoreCase(this.usuario.get(cont).getNombre_u()) && contraseña.equalsIgnoreCase(this.usuario.get(cont).getContraseña())) {
+            histori.add("Login de un usuario de la biblioteca virtual");
             u.setVisible(true);
             cont++;
         } else {
@@ -130,6 +143,7 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
                 correo = JOptionPane.showInputDialog(this, "Ingrese su correo electronico");
                 nombre_c = JOptionPane.showInputDialog(this, "Ingrese su nombre completo");
                 usuario.add(new Usuarios(nombre_u, contraseña, fecha_nace, numero_t, correo, nombre_c, ""));
+                histori.add("Se cro un nuevo usuario Administrador");
                 break;
             case 2:
                 nombre_u = JOptionPane.showInputDialog(this, "Ingrese usuario");
@@ -157,11 +171,19 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
                         break;
                 }//Fin del case de los libros
                 usuario.add(new Usuarios(nombre_u, contraseña, fecha_nace, numero_t, correo, nombre_c, genero_f));
+                histori.add("Se cro un nuevo usuario de la biblioteca");
                 break;
             default:
                 JOptionPane.showMessageDialog(this, "Opcion de creacion no valida");
         }//Fin del case de la opion de creacion de usuario
     }//GEN-LAST:event_bt_Creacion_UsuarioMouseClicked
+
+    private void bt_HistorailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_HistorailMouseClicked
+        // TODO add your handling code here:
+        for (int i = 0; i < histori.size(); i++) {
+            System.out.println(histori.get(i));
+        }
+    }//GEN-LAST:event_bt_HistorailMouseClicked
 
     /**
      * @param args the command line arguments
@@ -200,10 +222,12 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Creacion_Usuario;
+    private javax.swing.JButton bt_Historail;
     private javax.swing.JButton bt_Usaurio_Administrador;
     private javax.swing.JButton bt_Usuario_Biblioteca;
     // End of variables declaration//GEN-END:variables
 
     ArrayList<Usuarios> usuario = new ArrayList();
+    ArrayList<String> histori = new ArrayList();
     int cont = 0;
 }
