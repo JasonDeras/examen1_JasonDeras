@@ -517,6 +517,7 @@ public class Usuario extends javax.swing.JFrame {
                 modelol.addRow(newrow);
                 tabla4.setModel(modelol);
             }
+            tf_Libro.setText("");
             cont++;
         } else {
             JOptionPane.showMessageDialog(this, "El libro no existe en la libreria");
@@ -590,7 +591,11 @@ public class Usuario extends javax.swing.JFrame {
                 DefaultTableModel modelo = (DefaultTableModel) tabla3.getModel();
                 modelo.removeRow(tabla3.getSelectedRow());
                 tabla3.setModel(modelo);
+                ((Usuarios) libros.remove(cont)).getLibros();
+                ((Amigos) libros.get(cont)).setLibros(libros);
                 cont++;
+                //Caster a vacios los parametros otra vez
+                tf_Amigo.setText("");
             }
         } else {
             JOptionPane.showMessageDialog(this, "El usuario del amigo no existe");
@@ -604,6 +609,8 @@ public class Usuario extends javax.swing.JFrame {
             amigos.add(a);
             ((Usuarios) amigos.get(cont)).setAmigos(amigos);
             cont++;
+            //Caster a vacios los parametros otra vez
+            tf_Amigo1.setText("");
         } else {
             JOptionPane.showMessageDialog(this, "El usuario del amigo no existe");
         }

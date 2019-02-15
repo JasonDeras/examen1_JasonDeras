@@ -93,7 +93,7 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
         A.pack();
         String usuario = JOptionPane.showInputDialog(this, "Ingrese usuario");
         String contraseña = JOptionPane.showInputDialog(this, "Contraseña de usuario");
-        if (contraseña.equalsIgnoreCase("24052180") && usuario.equalsIgnoreCase("Diego Mendoza")) {
+        if (usuario.equalsIgnoreCase(this.usuario.get(cont).getNombre_u()) && contraseña.equalsIgnoreCase(this.usuario.get(cont).getContraseña())) {
             A.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Usuario Administrador no valido");
