@@ -5,6 +5,9 @@
  */
 package exa_1;
 
+import java.util.*;
+import javax.swing.*;
+
 /**
  *
  * @author jason
@@ -29,7 +32,15 @@ public class Usuario extends javax.swing.JFrame {
 
         tp_Usuario = new javax.swing.JTabbedPane();
         panel1 = new java.awt.Panel();
+        jl_Titulo_Libro = new javax.swing.JLabel();
+        tf_Libro = new javax.swing.JTextField();
+        bt_Agregar_Lista = new javax.swing.JButton();
         panel2 = new java.awt.Panel();
+        jl_Libros = new javax.swing.JLabel();
+        bt_Devolver = new javax.swing.JButton();
+        cb_Libros = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         panel3 = new java.awt.Panel();
         panel4 = new java.awt.Panel();
         panel5 = new java.awt.Panel();
@@ -39,28 +50,109 @@ public class Usuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Usuario");
 
+        jl_Titulo_Libro.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jl_Titulo_Libro.setText("Ingrese el titulo del libro");
+
+        bt_Agregar_Lista.setText("Agregar");
+        bt_Agregar_Lista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_Agregar_ListaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jl_Titulo_Libro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tf_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addComponent(bt_Agregar_Lista)))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addComponent(tf_Libro)
+                        .addGap(2, 2, 2))
+                    .addComponent(jl_Titulo_Libro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(156, 156, 156)
+                .addComponent(bt_Agregar_Lista)
+                .addContainerGap(246, Short.MAX_VALUE))
         );
 
         tp_Usuario.addTab("Agregar Libros", panel1);
+
+        jl_Libros.setText("Libros");
+
+        bt_Devolver.setText("Devolver");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Titulo", "Descripcion", "Puntaje", "Genero", "Valor", "Edicion", "Autor", "Año de Publicacion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
         panel2.setLayout(panel2Layout);
         panel2Layout.setHorizontalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(panel2Layout.createSequentialGroup()
+                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jl_Libros)
+                        .addGap(34, 34, 34)
+                        .addComponent(cb_Libros, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel2Layout.createSequentialGroup()
+                        .addGap(256, 256, 256)
+                        .addComponent(bt_Devolver)))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         panel2Layout.setVerticalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addGroup(panel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_Libros)
+                    .addComponent(cb_Libros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(bt_Devolver)
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         tp_Usuario.addTab("Devolver Lbros", panel2);
@@ -73,7 +165,7 @@ public class Usuario extends javax.swing.JFrame {
         );
         panel3Layout.setVerticalGroup(
             panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addGap(0, 475, Short.MAX_VALUE)
         );
 
         tp_Usuario.addTab("Informacion de Libros", panel3);
@@ -86,7 +178,7 @@ public class Usuario extends javax.swing.JFrame {
         );
         panel4Layout.setVerticalGroup(
             panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addGap(0, 475, Short.MAX_VALUE)
         );
 
         tp_Usuario.addTab("Prestar Libro", panel4);
@@ -99,7 +191,7 @@ public class Usuario extends javax.swing.JFrame {
         );
         panel5Layout.setVerticalGroup(
             panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addGap(0, 475, Short.MAX_VALUE)
         );
 
         tp_Usuario.addTab("Buscar Libros", panel5);
@@ -112,7 +204,7 @@ public class Usuario extends javax.swing.JFrame {
         );
         panel6Layout.setVerticalGroup(
             panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addGap(0, 475, Short.MAX_VALUE)
         );
 
         tp_Usuario.addTab("Agregar Amigos", panel6);
@@ -125,7 +217,7 @@ public class Usuario extends javax.swing.JFrame {
         );
         panel7Layout.setVerticalGroup(
             panel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addGap(0, 475, Short.MAX_VALUE)
         );
 
         tp_Usuario.addTab("Genero Favorito", panel7);
@@ -144,6 +236,15 @@ public class Usuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bt_Agregar_ListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_Agregar_ListaMouseClicked
+        // TODO add your handling code here:
+        Libros l = new Libros();
+        libros.add(l);
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Libros.getModel();
+        modelo.addElement(libros);
+        cb_Libros.setModel(modelo);
+    }//GEN-LAST:event_bt_Agregar_ListaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -155,7 +256,7 @@ public class Usuario extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -180,6 +281,13 @@ public class Usuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_Agregar_Lista;
+    private javax.swing.JButton bt_Devolver;
+    private javax.swing.JComboBox<String> cb_Libros;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jl_Libros;
+    private javax.swing.JLabel jl_Titulo_Libro;
     private java.awt.Panel panel1;
     private java.awt.Panel panel2;
     private java.awt.Panel panel3;
@@ -187,6 +295,9 @@ public class Usuario extends javax.swing.JFrame {
     private java.awt.Panel panel5;
     private java.awt.Panel panel6;
     private java.awt.Panel panel7;
+    private javax.swing.JTextField tf_Libro;
     private javax.swing.JTabbedPane tp_Usuario;
     // End of variables declaration//GEN-END:variables
+
+    ArrayList libros = new ArrayList();
 }
