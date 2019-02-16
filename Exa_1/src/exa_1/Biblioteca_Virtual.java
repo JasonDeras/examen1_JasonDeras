@@ -104,8 +104,8 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
         A.pack();
         String usuario = JOptionPane.showInputDialog(this, "Ingrese usuario");
         String contraseña = JOptionPane.showInputDialog(this, "Contraseña de usuario");
-        if (usuario.equalsIgnoreCase(this.usuario.get(cont).getNombre_u()) && contraseña.equalsIgnoreCase(this.usuario.get(cont).getContraseña())) {
-            histori.add("Login de un usuario ad ministrador de la biblioteca virtual");
+        if (usuario.equalsIgnoreCase("Diego_Mendoza") && contraseña.equalsIgnoreCase("24052180")) {
+            histori.add("Login de un usuario administrador de la biblioteca virtual");
             A.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Usuario Administrador no valido");
@@ -131,51 +131,33 @@ public class Biblioteca_Virtual extends javax.swing.JFrame {
     private void bt_Creacion_UsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_Creacion_UsuarioMouseClicked
         // TODO add your handling code here:
         String genero_f = "", nombre_u = "", contraseña = "", numero_t = "", correo = "", nombre_c = "";
-        int op = Integer.parseInt(JOptionPane.showInputDialog(this, "1. Usuario\n2. Usuario Administrador\nIngrese una opcion de creacion del usuario"));
         Date fecha_nace = new Date();
-        switch (op) {
+        nombre_u = JOptionPane.showInputDialog(this, "Ingrese usuario");
+        contraseña = JOptionPane.showInputDialog(this, "Contraseña de usuario");
+        fecha_nace = new Date();
+        numero_t = JOptionPane.showInputDialog(this, "Ingrese su numero de telefono");
+        correo = JOptionPane.showInputDialog(this, "Ingrese su correo electronico");
+        nombre_c = JOptionPane.showInputDialog(this, "Ingrese su nombre completo");
+        int genero = Integer.parseInt(JOptionPane.showInputDialog(this, "1. Fantasia\n2. Romance\n3. Accion\n4. Historia\nIngrese una opcion como su genero favorito"));
+        switch (genero) {
             case 1:
-
-                nombre_u = JOptionPane.showInputDialog(this, "Ingrese usuario");
-                contraseña = JOptionPane.showInputDialog(this, "Contraseña de usuario");
-                fecha_nace = new Date();
-                numero_t = JOptionPane.showInputDialog(this, "Ingrese su numero de telefono");
-                correo = JOptionPane.showInputDialog(this, "Ingrese su correo electronico");
-                nombre_c = JOptionPane.showInputDialog(this, "Ingrese su nombre completo");
-                usuario.add(new Usuarios(nombre_u, contraseña, fecha_nace, numero_t, correo, nombre_c, ""));
-                histori.add("Se cro un nuevo usuario Administrador");
+                genero_f = "Fantasia";
                 break;
             case 2:
-                nombre_u = JOptionPane.showInputDialog(this, "Ingrese usuario");
-                contraseña = JOptionPane.showInputDialog(this, "Contraseña de usuario");
-                fecha_nace = new Date();
-                numero_t = JOptionPane.showInputDialog(this, "Ingrese su numero de telefono");
-                correo = JOptionPane.showInputDialog(this, "Ingrese su correo electronico");
-                nombre_c = JOptionPane.showInputDialog(this, "Ingrese su nombre completo");
-                int genero = Integer.parseInt(JOptionPane.showInputDialog(this, "1. Fantasia\n2. Romance\n3. Accion\n4. Historia\nIngrese una opcion como su genero favorito"));
-                switch (genero) {
-                    case 1:
-                        genero_f = "Fantasia";
-                        break;
-                    case 2:
-                        genero_f = "Romance";
-                        break;
-                    case 3:
-                        genero_f = "Accion";
-                        break;
-                    case 4:
-                        genero_f = "Histario";
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(this, "Tipo de genero favorito no valido");
-                        break;
-                }//Fin del case de los libros
-                usuario.add(new Usuarios(nombre_u, contraseña, fecha_nace, numero_t, correo, nombre_c, genero_f));
-                histori.add("Se cro un nuevo usuario de la biblioteca");
+                genero_f = "Romance";
+                break;
+            case 3:
+                genero_f = "Accion";
+                break;
+            case 4:
+                genero_f = "Histario";
                 break;
             default:
-                JOptionPane.showMessageDialog(this, "Opcion de creacion no valida");
-        }//Fin del case de la opion de creacion de usuario
+                JOptionPane.showMessageDialog(this, "Tipo de genero favorito no valido");
+                break;
+        }//Fin del case de los libros
+        usuario.add(new Usuarios(nombre_u, contraseña, fecha_nace, numero_t, correo, nombre_c, genero_f));
+        histori.add("Se cro un nuevo usuario de la biblioteca");
     }//GEN-LAST:event_bt_Creacion_UsuarioMouseClicked
 
     private void bt_HistorailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_HistorailMouseClicked
